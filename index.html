@@ -6,33 +6,76 @@
     <title>Document</title>
     <style>
         .box1{
-            background-color: blueviolet;
+            background-color: rgb(170, 116, 221);
             display: inline;
             height: 200px;
-            width: 500px;
+            width: 1000px;
             position: absolute;
             left: 500px;
             top: 100px;
         }
+        #taskinput{
+            background-color:white;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 5px;
+             border: none;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        #taskinput:hover{
+              background-color: rgb(128, 6, 241);
+              padding: 10px;
+        }
         ul{
-            background-color: rgb(111, 49, 49);
             color: rgb(231, 231, 238);
         }
         li{
-            color: rgb(239, 235, 243);
+            color: black;
+            font-size: 24px;
+            list-style: none;
         }
         button{
-            background-color: rgb(236, 44, 10);
+            background-color: rgb(231, 227, 227);
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 5px;
+            margin:15px;
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        button:hover{
+            background-color: rgb(55, 243, 18);
+            color: white;
+        }
+
+        .del{
+            background-color: rgb(231, 227, 227);
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 5px;
+            margin:15px;
+             border: none;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .del:hover{
+            background-color:red ;
+            color:white;
         }
         #add{
-            background-color: blue;
+            background-color: white;
         }
+        #add:hover{
+            background-color: rgb(21, 6, 243);
+        }
+        
     </style>
 </head>
 <body class="box1">
     <div class="con">
-        <input type="text " id="taskinput">
+        <input type="text " id="taskinput"  placeholder="Tyep the text">
         <button id="add">Add task</button>
         <ul ></ul>
         <h1></h1>
@@ -44,20 +87,24 @@
         let input=document.getElementById('taskinput')
         let add=document.getElementById('add')
         let message=document.querySelector('h1')
+        let count = 1;
         add.addEventListener('click',()=>{
             if(input.value==""){
                 message.textContent='please type the task name'
-                document.body.append(message)
-            }else{
+                message.style.color='red'
+                return
+            }
                 let taskDiv=document.querySelector('ul')
                 let li=document.createElement("li")
-                li.textContent=input.value
+                li.textContent=count + ". " +input.value
                 taskDiv.appendChild(li)
-                input.value=''
+                input.value = ''
+                count ++
 
 
                 let del=document.createElement("button")
                  del.textContent="Delete"
+                 del.classList.add('del')
                  li.appendChild(del)
                 del.addEventListener('click',()=>{
                     li.remove()
@@ -73,7 +120,7 @@
                 })
             }
            
-        })
+        )
         
     </script>
 </body>
