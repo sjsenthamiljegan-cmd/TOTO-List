@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: blueviolet;
+            display: inline;
+            height: 200px;
+            width: 500px;
+            position: absolute;
+            left: 500px;
+            top: 100px;
+        }
+        ul{
+            background-color: rgb(111, 49, 49);
+            color: rgb(231, 231, 238);
+        }
+        li{
+            color: rgb(239, 235, 243);
+        }
+        button{
+            background-color: rgb(236, 44, 10);
+            text-align: center;
+        }
+        #add{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body class="box1">
+    <div class="con">
+        <input type="text " id="taskinput">
+        <button id="add">Add task</button>
+        <ul ></ul>
+        <h1></h1>
+
+
+        </ul>
+    </div>
+    <script>
+        let input=document.getElementById('taskinput')
+        let add=document.getElementById('add')
+        let message=document.querySelector('h1')
+        add.addEventListener('click',()=>{
+            if(input.value==""){
+                message.textContent='please type the task name'
+                document.body.append(message)
+            }else{
+                let taskDiv=document.querySelector('ul')
+                let li=document.createElement("li")
+                li.textContent=input.value
+                taskDiv.appendChild(li)
+                input.value=''
+
+
+                let del=document.createElement("button")
+                 del.textContent="Delete"
+                 li.appendChild(del)
+                del.addEventListener('click',()=>{
+                    li.remove()
+                })
+                
+
+                
+                let com=document.createElement("button")
+                 com.textContent="completed"
+                 li.appendChild(com)
+                com.addEventListener('click',()=>{
+                   li.style.textDecoration='line-through'
+                })
+            }
+           
+        })
+        
+    </script>
+</body>
+</html>
